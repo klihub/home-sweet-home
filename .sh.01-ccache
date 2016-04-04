@@ -1,0 +1,26 @@
+# Put the cache here.
+export CCACHE_DIR=/u/ccache/kli
+
+# And allow unlimited caching.
+ccache -M 0 >& /dev/null
+
+# add functions for disabling and re-enabling ccache
+function ccache_disable () {
+    export SAVED_CCACHE_PATH="$(echo $PATH | tr -s ':' '\n' | grep ccache |
+                                   sort -u | head -1)"
+    export PATH="$(echo $PATH | tr -s ':' '\n' | grep -v ccache |
+                       tr '\n' ':' | sed 's/::/:/g' | sed 's/:$//g')"
+    if [ -n "$SAVED_CCACHE_PATH" ]; then
+        echo "Saved ccache path: $SAVED_CCACHE_PATH"
+    fi
+}
+
+function ccache_enable () {
+    if [ -n "$SAVED_CCACHE_PATH" ]; then
+        export PATH="$PATH:$SAVED_CCACHE_PATH"
+        echo "Re-added ccache path: $SAVED_CCACHE_PATH"
+    else
+        echo "I have no saved ccache path."
+        return 1
+    fi
+}

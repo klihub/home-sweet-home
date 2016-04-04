@@ -1,0 +1,51 @@
+#export GIT_PROXY_COMMAND=~/scripts/git-proxy.sh
+
+git_branch () {
+    local _retval="$1"
+    local _br
+
+    if git status >& /dev/null; then
+        _br=" (`git branch -l | grep -e '^\*' | cut -d ' ' -f 2`)"
+    else
+        _br=""
+    fi
+
+    [ -n "$_retval" ] && eval "$_retval=\"$_br\"" || echo "$_br"
+}
+
+get_title () {
+    local _retid="$1" _retpath="$2" _retgit="$3"
+    local _id _path _git _full
+    local _len _max _offs
+
+    _id="${USER}@${HOSTNAME%%,*}"
+    _path="${PWD/$HOME/~}"
+    git_branch _git
+    _full="$_id:$_path$_git"
+
+    # shorten path if necessary
+    _len="${#_full}"
+    _max=$((${COLUMNS:-80} - 20))
+    if [ $_len -ge $_max ]; then
+        _offs=$(($_len - $_max))
+        while [ $_offs -le $_len -a "${_path:$_offs:1}" != "/" ]; do
+            _offs=$(($_offs + 1))
+        done
+        _path="...${_path:$_offs}"
+    fi
+
+    eval "$_retid=\"$_id\""
+    eval "$_retpath=\"$_path\""
+    eval "$_retgit=\"$_git\""
+}
+
+case $TERM in
+    xterm*)
+        PROMPT_COMMAND='get_title id pth br; printf "\033]0;$id:$pth$br\007"'
+        ;;
+         *)
+        PROMPT_COMMAND=''
+        ;;
+esac
+
+#PROMPT_COMMAND='git_branch gitbr; printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}""${gitbr}"'

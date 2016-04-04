@@ -1,0 +1,23 @@
+# Load all rc files (.sh.[0-9]*-*) from the given directory (default: ~).
+load-rc-files () {
+    local _rc
+
+    for _rc in `ls ${1:-~}/.sh.[0-9]*-* | sort`; do
+        case $_rc in
+            *~|*.swp) continue;;
+            *) . $_rc;;
+        esac
+    done
+}
+
+# Load all of our rc files.
+load-rc-files ~
+
+_DOT_SH_INIT=1
+
+##########
+# To enable .sh-customisation, add this to your ~/.bashrc:
+#
+# # Hook-in our init files if needed.
+# [ ! -n "$_DOT_SH_INIT" ] && . ~/.sh.init || :
+#

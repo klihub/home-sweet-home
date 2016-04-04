@@ -1,0 +1,22 @@
+# Remove a given set of aliases if they exist.
+remove_aliasen () {
+    local _a
+
+    for _a in $*; do
+        alias | grep -q "^$_a=" && unalias $_a || :
+    done
+}
+
+# Remove unwanted aliasen.
+remove_aliasen rm mv cp ll lf
+
+# Add out own aliasen.
+alias ll='ls -Fal'
+alias lf='ls -CF'
+alias xs=cd
+alias vf=cd
+alias mroe=more
+alias more=less
+
+alias vmplayer="/bin/bash -c 'export force_s3tc_enable=true; \
+                                exec vmplayer >& /dev/null'"
