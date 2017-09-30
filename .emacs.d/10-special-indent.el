@@ -7,9 +7,9 @@
 ;; error marking as specified below in the entries.
 ;;
 (setq indent-config              ;;  depth use-tabs mark-ws-errors
-      '((".*/WebKit/Source/.*"      (4     true     nil))
-	(".*/linux/.*"              (8     true     nil))
-	(".*/rhythmbox/.*"          (8     true     nil))
+      '((".*/WebKit/Source/.*"      (4     true     nil ))
+	(".*/linux/.*"              (8     true     nil ))
+	(".*/rhythmbox/.*"          (8     true     nil ))
 	(".*/murphy/.*"             (4     nil      true))
 	(".*/speech-recognition/.*" (4     nil      true))
 	(".*/winthorpe/.*"          (4     nil      true))
@@ -17,7 +17,11 @@
       	(".*/policy-misc/.*"        (4     nil      true))
         (".*/iot-lib/.*"            (4     nil      true))
 	(".*/iot-app-fw/.*"         (4     nil      true))
-	(".*"                       (2     true     nil))))
+	(".*/ripncode/.*"           (4     nil      true))
+        (".*/flatpak-utils/.*"      (4     nil      true))
+        (".*/refkit-ostree.*/.*"    (4     nil      true))
+        (".*/swupdate.*/.*"         (8     true     nil ))
+	(".*"                       (2     true     nil ))))
 
 ;; Determine preference table entry for a file.
 (defun get-file-prefs (file-name config)
