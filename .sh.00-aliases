@@ -11,11 +11,15 @@ remove_aliasen () {
 remove_aliasen rm mv cp ll lf
 
 # Add out own aliasen.
+typo () { echo "Bwahahaha... You suck at typing !"; _cmd=$1; shift; $_cmd $*; }
+
+alias xs='typo cd'
+alias vf='typo cd'
+alias mroe='typo more'
+alias got='typo git'
+
 alias ll='ls -Fal'
 alias lf='ls -CF'
-alias xs=cd
-alias vf=cd
-alias mroe=more
 alias more=less
 
 alias vmplayer="/bin/bash -c 'export force_s3tc_enable=true; \
