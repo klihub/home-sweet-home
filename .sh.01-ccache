@@ -1,5 +1,12 @@
-# Put the cache here.
-export CCACHE_DIR=/u/ccache/kli
+# Put the cache to one of these, if found.
+LOCATIONS="/v/ccache/users/kli /u/ccache/users/kli /u/cacche/kli"
+
+for l in $LOCATIONS; do
+    if [ -d $l ]; then
+        export CCACHE_DIR=$l
+        break
+    fi
+done
 
 # And allow unlimited caching.
 ccache -M 0 >& /dev/null
