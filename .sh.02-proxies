@@ -1,4 +1,1 @@
-export http_proxy=http://proxy.jf.intel.com:911
-export https_proxy=$http_proxy
-export ftp_proxy=http://proxy.jf.intel.com:911
-export no_proxy='.intel.com'
+# No proxy is good proxy...
