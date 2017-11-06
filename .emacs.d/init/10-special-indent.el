@@ -1,3 +1,11 @@
+;; Turn off electric indent for C*- and shell, modes.
+(add-hook 'c-mode-hook (lambda () (electric-indent-local-mode -1)))
+(add-hook 'c++-mode-hook (lambda () (electric-indent-local-mode -1)))
+(add-hook 'sh-mode-hook (lambda () (electric-indent-local-mode -1)))
+
+;; Nah... stopped working, try with a sledgehammer.
+(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+
 ;; Do not use TABs for indentation by default.
 (setq-default indent-tabs-mode nil)
 
@@ -17,6 +25,10 @@
       	(".*/policy-misc/.*"        (4     nil      true))
         (".*/iot-lib/.*"            (4     nil      true))
 	(".*/iot-app-fw/.*"         (4     nil      true))
+        (".*/flatpak-utils/.*"      (4     nil      true))
+        (".*/refkit-ostree.*/.*"    (4     nil      true))
+        (".*/network-check/.*"      (4     nil      true))
+        (".*/swupdate/.*"           (8     true     nil))
 	(".*"                       (2     true     nil))))
 
 ;; Determine preference table entry for a file.
