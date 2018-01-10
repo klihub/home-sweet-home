@@ -20,7 +20,9 @@
 	(".*/ripncode/.*"           (4     nil      true))
         (".*/flatpak-utils/.*"      (4     nil      true))
         (".*/refkit-ostree.*/.*"    (4     nil      true))
+        (".*/swup_handler.c"        (8     true     true))
         (".*/swupdate.*/.*"         (8     true     nil ))
+	(".*.py"                    (4     true     true))
 	(".*"                       (2     true     nil ))))
 
 ;; Determine preference table entry for a file.
@@ -42,14 +44,16 @@
 ;; Get tab-usage preference from an entry
 (defun get-tabs-pref (entry)
   "Get tab usage preference from an entry."
-  (progn (print (format "Indentation TAB usage for %s: %S..."
+  (progn (print (format "Indentation TAB usage for %s: %s..."
                         (buffer-file-name) (car (cdr entry))))
          (car (cdr entry))))
 
 ;; Get whitespace error marking preference from an entry.
 (defun get-mark-ws-pref (entry)
   "Get whitespace error marking preference from an entry."
-  (car (cdr (cdr entry))))
+  (progn (print (format "Marking whitespace error for %s: %s..."
+                        (buffer-file-name) (car (cdr (cdr entry)))))
+         (car (cdr (cdr entry)))))
 
 ;; Mode hook function to set custom indentation depth.
 (defun preferred-indent-depth-hook ()
@@ -89,3 +93,5 @@
 (add-hook 'c++-mode-hook 'preferred-indent-depth-hook)
 (add-hook 'c++-mode-hook 'preferred-indent-tabs-hook)
 (add-hook 'c++-mode-hook 'preferred-ws-marking-hook)
+(add-hook 'python-mode-hook 'preferred-indent-tabs-hook)
+(add-hook 'python-mode-hook 'preferred-ws-marking-hook)
