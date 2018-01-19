@@ -22,7 +22,7 @@
         (".*/refkit-ostree.*/.*"    (4     nil      true))
         (".*/swup_handler.c"        (8     true     true))
         (".*/swupdate.*/.*"         (8     true     nil ))
-	(".*.py"                    (4     true     true))
+	(".*.py"                    (4     nil      true))
 	(".*"                       (2     true     nil ))))
 
 ;; Determine preference table entry for a file.
