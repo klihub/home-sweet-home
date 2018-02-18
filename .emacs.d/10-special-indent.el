@@ -95,3 +95,10 @@
 (add-hook 'c++-mode-hook 'preferred-ws-marking-hook)
 (add-hook 'python-mode-hook 'preferred-indent-tabs-hook)
 (add-hook 'python-mode-hook 'preferred-ws-marking-hook)
+
+;; Go-mode is not derived from c-mode so we can't customize it with the
+;; same infra. We settle for setting tab-mode to 4 in go mode for now.
+(defun preferred-go-settings-hook ()
+  (setq tab-width 4))
+
+(add-hook 'go-mode-hook 'preferred-go-settings-hook)
