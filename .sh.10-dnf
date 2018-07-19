@@ -1,0 +1,3 @@
+alias home-dnf='sudo dnf --disablerepo="intel*"'
+alias intel-dnf='sudo dnf --disablerepo="*" --enablerepo="intel*"'
+
