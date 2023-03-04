@@ -48,4 +48,8 @@ case $TERM in
         ;;
 esac
 
+case "$EDITOR" in
+    nano*) unset EDITOR;;
+esac
+
 #PROMPT_COMMAND='git_branch gitbr; printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}""${gitbr}"'
