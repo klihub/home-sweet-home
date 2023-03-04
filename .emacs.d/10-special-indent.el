@@ -98,3 +98,15 @@
 (add-hook 'c++-mode-hook 'preferred-ws-marking-hook)
 (add-hook 'python-mode-hook 'preferred-indent-tabs-hook)
 (add-hook 'python-mode-hook 'preferred-ws-marking-hook)
+
+;; Go-mode is not derived from c-mode so we can't customize
+;; it with the same infra. We settle for setting tab-width
+;; to 4 in go-mode, and enabling whitespace mode with marking
+;; trailing spaces only (without highlighting spaces).
+(defun preferred-go-settings-hook ()
+  (progn
+    (setq tab-width 4)
+    (setq whitespace-style '(face trailing))
+    (whitespace-mode)))
+
+(add-hook 'go-mode-hook 'preferred-go-settings-hook)
