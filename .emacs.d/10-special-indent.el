@@ -1,3 +1,6 @@
+;; Find a big sledge-hammer and smash fscking electric-indent into a million pieces...
+(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+
 ;; Do not use TABs for indentation by default.
 (setq-default indent-tabs-mode nil)
 
