@@ -5,3 +5,6 @@
 
 ; display column number in the status line
 (column-number-mode 1)
+
+; no audio bell
+(setq ring-bell-function 'ignore)
