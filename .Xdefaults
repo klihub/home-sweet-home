@@ -1,0 +1,17 @@
+*Emacs*foreground:   #ffffff
+*Emacs*background:   #505050
+*Emacs*pointerColor: #ff0000
+*Emacs*cursorColor:  #ff0000
+!# fonts are set up from .emacs.d
+!# *Emacs*font:	     8x16
+*Emacs*geometry:     80x70
+
+*XTerm*foreground:   #ffffff
+*XTerm*background:   #000000
+*XTerm*cursorColor:  #ff0000
+*XTerm*pointerColor: #ff0000
+*XTerm*saveLines:    32768
+*XTerm*font:	     8x13
+*XTerm*geometry:     80x37
+*XTerm*visualBell:   True
+XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
