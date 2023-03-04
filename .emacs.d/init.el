@@ -5,6 +5,8 @@
 ; If you do not specify any modules, all of them will be loaded.
 ;(setq ini-modules '("strip-bars.el"))
 
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
 ; By default load all modules.
 (if (not (boundp 'ini-modules))
     (setq ini-modules (directory-files "~/.emacs.d" nil "[0-9]+-*.*.el$")))
