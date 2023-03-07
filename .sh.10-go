@@ -1,0 +1,5 @@
+export GOPATH=/scratch0/go/packages
+export PATH="/scratch0/go/current/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
+
+unset GOROOT
